@@ -65,46 +65,88 @@ Ordem dos quadrantes:
 
 Responsável por:
 
-- leitura das dimensões
-- inicialização da leitura do mapa
-- chamada da codificação
+- leitura das dimensões do mapa
+- chamada da leitura recursiva
+- inicialização da codificação
+- impressão do código final
 
 ---
 
 ### `lerMapa()`
 
-Realiza a leitura recursiva do mapa.
+Realiza a leitura recursiva do mapa informado pelo usuário.
 
-**Parâmetros:**
+#### Parâmetros
 
 - `i` → linha atual
 - `j` → coluna atual
-- `linhas` → total de linhas
-- `colunas` → total de colunas
+- `linhas` → quantidade total de linhas
+- `colunas` → quantidade total de colunas
 
 ---
 
 ### `uniforme()`
 
-Verifica recursivamente se todas as células possuem o mesmo valor.
+Verifica se uma região do mapa possui apenas um único tipo de caractere.
 
-**Retorno:**
+A função utiliza a função auxiliar `verificaUniforme()` para percorrer o submapa recursivamente.
 
-- `1` → uniforme
-- `0` → não uniforme
+#### Retorno
+
+- `1` → região uniforme
+- `0` → região não uniforme
+
+---
+
+### `verificaUniforme()`
+
+Função auxiliar recursiva utilizada por `uniforme()`.
+
+Responsável por percorrer célula por célula dentro do submapa analisado.
+
+#### Parâmetros
+
+- `i` → linha atual
+- `j` → coluna atual
+- `li` → linha inicial
+- `ci` → coluna inicial
+- `lf` → linha final
+- `cf` → coluna final
+- `valor` → caractere esperado (`#` ou `.`)
 
 ---
 
 ### `codificar()`
 
-Função principal recursiva.
+Função principal responsável pela codificação recursiva do mapa.
 
-Responsável por:
+#### Responsabilidades
 
-- verificar uniformidade
-- emitir `P`, `C` ou `X`
-- dividir em quadrantes
-- chamar a si mesma recursivamente
+- verificar se o submapa é uniforme
+- imprimir `P`, `C` ou `X`
+- dividir o mapa em quadrantes
+- realizar chamadas recursivas para cada quadrante
+
+#### Parâmetros
+
+- `li` → linha inicial
+- `ci` → coluna inicial
+- `lf` → linha final
+- `cf` → coluna final
+
+---
+
+## Regras de Divisão
+
+Quando o número de linhas ou colunas é ímpar:
+
+- o quadrante esquerdo recebe a coluna extra
+- o quadrante superior recebe a linha extra
+
+Casos especiais:
+
+- mapas com apenas 1 linha não possuem quadrantes inferiores
+- mapas com apenas 1 coluna não possuem quadrantes direitos
 
 ---
 
@@ -116,17 +158,3 @@ Responsável por:
 # # . # #
 # . . # #
 # # # . .
-```
-
----
-
-## Saída Esperada
-
-```txt
-Codigo: XXPCXPCCPPC
-```
---
-
-![alt text](image.png)
-
-![alt text](image-1.png)
