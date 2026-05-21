@@ -158,3 +158,7 @@ Casos especiais:
 # # . # #
 # . . # #
 # # # . .
+
+
+Saída:
+Codigo: XXPCXPCCPPC
